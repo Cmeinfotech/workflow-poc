@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1240" viewBox="0 0 1900 1240">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="45%" stop-color="#12315f"/>
+      <stop offset="100%" stop-color="#063b34"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" x2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" x2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" x2="1">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" x2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" x2="1">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-18%" y="-18%" width="136%" height="136%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#020617" flood-opacity="0.32"/>
+    </filter>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+      <path d="M2,2 L12,7 L2,12 Z" fill="#a7b7cc"/>
+    </marker>
+    <style>
+      .title{font-family:Inter,Arial,sans-serif;font-size:48px;font-weight:850;fill:#f8fafc}
+      .subtitle{font-family:Inter,Arial,sans-serif;font-size:20px;fill:#cbd5e1}
+      .section{fill:rgba(255,255,255,.07);stroke:rgba(226,232,240,.18);stroke-width:1.5}
+      .section-title{font-family:Inter,Arial,sans-serif;font-size:16px;font-weight:800;letter-spacing:.1em;fill:#bae6fd}
+      .card{fill:#f8fafc;stroke:#dbeafe;stroke-width:1.4;filter:url(#shadow)}
+      .card-dark{fill:#0f172a;stroke:#334155;stroke-width:1.4;filter:url(#shadow)}
+      .decision{fill:#fffbeb;stroke:#f59e0b;stroke-width:1.7;filter:url(#shadow)}
+      .card-title{font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:800;fill:#0f172a}
+      .card-title-dark{font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:800;fill:#f8fafc}
+      .body{font-family:Inter,Arial,sans-serif;font-size:15px;fill:#475569}
+      .body-dark{font-family:Inter,Arial,sans-serif;font-size:15px;fill:#cbd5e1}
+      .tiny{font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:700;fill:#64748b}
+      .chip{fill:#e0f2fe;stroke:#bae6fd}
+      .chip-text{font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:800;fill:#0369a1}
+      .metric{font-family:Inter,Arial,sans-serif;font-size:13px;font-weight:800;fill:#0f766e}
+      .icon{font-family:Inter,Arial,sans-serif;font-size:26px;font-weight:900;fill:#ffffff}
+      .line{stroke:#a7b7cc;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .line-dash{stroke:#fbbf24;stroke-width:2.5;stroke-dasharray:8 8;fill:none;marker-end:url(#arrow)}
+      .line-green{stroke:#34d399;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .note{font-family:Inter,Arial,sans-serif;font-size:14px;fill:#dbeafe}
+    </style>
+  </defs>
+
+  <rect width="1900" height="1240" fill="url(#bg)"/>
+  <rect x="44" y="42" width="1812" height="1156" rx="34" fill="rgba(2,6,23,.28)" stroke="rgba(226,232,240,.16)"/>
+
+  <text x="92" y="112" class="title">Intelligent Document Workflow</text>
+  <text x="94" y="150" class="subtitle">Detailed journey from document intake to validated business record, approval, delivery and audit evidence</text>
+
+  <rect x="80" y="195" width="1740" height="165" rx="24" class="section"/>
+  <text x="112" y="230" class="section-title">1. MULTI-SOURCE INTAKE</text>
+
+  <rect x="120" y="260" width="230" height="64" rx="16" class="card"/>
+  <circle cx="152" cy="292" r="18" fill="url(#cyan)"/><text x="144" y="301" class="icon">@</text>
+  <text x="182" y="287" class="card-title" font-size="18">Email Inbox</text>
+  <text x="182" y="309" class="body">AP mailbox capture</text>
+
+  <rect x="380" y="260" width="230" height="64" rx="16" class="card"/>
+  <circle cx="412" cy="292" r="18" fill="url(#green)"/><text x="404" y="301" class="icon">P</text>
+  <text x="442" y="287" class="card-title" font-size="18">Portal Upload</text>
+  <text x="442" y="309" class="body">Vendor/self-service</text>
+
+  <rect x="640" y="260" width="230" height="64" rx="16" class="card"/>
+  <circle cx="672" cy="292" r="18" fill="url(#violet)"/><text x="662" y="301" class="icon">A</text>
+  <text x="702" y="287" class="card-title" font-size="18">API/Webhook</text>
+  <text x="702" y="309" class="body">System submitted</text>
+
+  <rect x="900" y="260" width="230" height="64" rx="16" class="card"/>
+  <circle cx="932" cy="292" r="18" fill="url(#orange)"/><text x="923" y="301" class="icon">S3</text>
+  <text x="968" y="287" class="card-title" font-size="18">Storage</text>
+  <text x="968" y="309" class="body">Folder polling</text>
+
+  <rect x="1160" y="260" width="230" height="64" rx="16" class="card"/>
+  <circle cx="1192" cy="292" r="18" fill="url(#cyan)"/><text x="1184" y="301" class="icon">M</text>
+  <text x="1222" y="287" class="card-title" font-size="18">Mobile Scan</text>
+  <text x="1222" y="309" class="body">Image capture</text>
+
+  <rect x="1420" y="260" width="330" height="64" rx="16" class="card-dark"/>
+  <text x="1450" y="287" class="card-title-dark">Intake Guardrails</text>
+  <text x="1450" y="310" class="body-dark">File type, size, virus scan, duplicate hash</text>
+
+  <path class="line" d="M950 360 L950 405"/>
+
+  <rect x="80" y="405" width="1740" height="405" rx="24" class="section"/>
+  <text x="112" y="440" class="section-title">2. AI PROCESSING AND DECISIONING</text>
+
+  <rect x="125" y="500" width="230" height="150" rx="18" class="card"/>
+  <rect x="125" y="500" width="230" height="12" rx="6" fill="url(#cyan)"/>
+  <text x="155" y="545" class="card-title">Normalize</text>
+  <text x="155" y="574" class="body">Convert files into a</text>
+  <text x="155" y="596" class="body">standard document object.</text>
+  <rect x="155" y="615" width="102" height="24" rx="8" class="chip"/><text x="170" y="632" class="chip-text">Metadata</text>
+
+  <rect x="405" y="500" width="230" height="150" rx="18" class="card"/>
+  <rect x="405" y="500" width="230" height="12" rx="6" fill="url(#violet)"/>
+  <text x="435" y="545" class="card-title">Classify</text>
+  <text x="435" y="574" class="body">Detect invoice, PO,</text>
+  <text x="435" y="596" class="body">receipt or contract type.</text>
+  <text x="435" y="632" class="metric">92% auto-routed</text>
+
+  <polygon points="760,488 895,575 760,662 625,575" class="decision"/>
+  <text x="702" y="562" class="card-title">Confidence</text>
+  <text x="716" y="589" class="body">above threshold?</text>
+  <text x="710" y="614" class="tiny">AI score + rule checks</text>
+
+  <rect x="1015" y="500" width="230" height="150" rx="18" class="card"/>
+  <rect x="1015" y="500" width="230" height="12" rx="6" fill="url(#green)"/>
+  <text x="1045" y="545" class="card-title">Template Match</text>
+  <text x="1045" y="574" class="body">Select layout, vendor</text>
+  <text x="1045" y="596" class="body">field map and version.</text>
+  <text x="1045" y="632" class="metric">248 active templates</text>
+
+  <rect x="1300" y="500" width="230" height="150" rx="18" class="card"/>
+  <rect x="1300" y="500" width="230" height="12" rx="6" fill="url(#cyan)"/>
+  <text x="1330" y="545" class="card-title">OCR Extract</text>
+  <text x="1330" y="574" class="body">Read text, tables, tax,</text>
+  <text x="1330" y="596" class="body">totals and line items.</text>
+  <text x="1330" y="632" class="metric">98.6% accuracy</text>
+
+  <rect x="1580" y="500" width="190" height="150" rx="18" class="card-dark"/>
+  <text x="1610" y="545" class="card-title-dark">Structured</text>
+  <text x="1610" y="572" class="card-title-dark">Payload</text>
+  <text x="1610" y="604" class="body-dark">JSON fields</text>
+  <text x="1610" y="626" class="body-dark">Line items</text>
+  <text x="1610" y="648" class="body-dark">Confidence bands</text>
+
+  <path class="line" d="M355 575 L400 575"/>
+  <path class="line" d="M635 575 L625 575"/>
+  <path class="line-green" d="M895 575 L1010 575"/>
+  <path class="line" d="M1245 575 L1295 575"/>
+  <path class="line" d="M1530 575 L1575 575"/>
+
+  <rect x="625" y="700" width="270" height="75" rx="16" class="card-dark"/>
+  <text x="655" y="732" class="card-title-dark" font-size="19">Exception Queue</text>
+  <text x="655" y="756" class="body-dark">Low confidence, unsupported layout, duplicate, mismatch</text>
+  <path class="line-dash" d="M760 662 L760 696"/>
+
+  <path class="line" d="M1675 650 L1675 865"/>
+
+  <rect x="80" y="865" width="1740" height="225" rx="24" class="section"/>
+  <text x="112" y="900" class="section-title">3. VALIDATION, HUMAN REVIEW, APPROVAL AND FINAL DELIVERY</text>
+
+  <rect x="120" y="955" width="255" height="95" rx="18" class="card"/>
+  <rect x="120" y="955" width="255" height="12" rx="6" fill="url(#green)"/>
+  <text x="150" y="997" class="card-title">Validation</text>
+  <text x="150" y="1024" class="body">GSTIN, PO match, totals, vendor master</text>
+
+  <polygon points="525,932 650,1002 525,1072 400,1002" class="decision"/>
+  <text x="474" y="992" class="card-title">Valid?</text>
+  <text x="456" y="1020" class="body">AI + finance rules</text>
+
+  <rect x="710" y="955" width="255" height="95" rx="18" class="card"/>
+  <rect x="710" y="955" width="255" height="12" rx="6" fill="url(#orange)"/>
+  <text x="740" y="997" class="card-title">Human Review</text>
+  <text x="740" y="1024" class="body">Reviewer corrects fields and resolves exceptions</text>
+
+  <rect x="1025" y="955" width="255" height="95" rx="18" class="card"/>
+  <rect x="1025" y="955" width="255" height="12" rx="6" fill="url(#violet)"/>
+  <text x="1055" y="997" class="card-title">Approval Routing</text>
+  <text x="1055" y="1024" class="body">Amount, role, SLA and delegation matrix</text>
+
+  <rect x="1340" y="955" width="255" height="95" rx="18" class="card"/>
+  <rect x="1340" y="955" width="255" height="12" rx="6" fill="url(#cyan)"/>
+  <text x="1370" y="997" class="card-title">ERP Sync</text>
+  <text x="1370" y="1024" class="body">SAP, Tally, Dynamics or webhook delivery</text>
+
+  <rect x="1640" y="955" width="150" height="95" rx="18" class="card-dark"/>
+  <text x="1665" y="997" class="card-title-dark">Audit</text>
+  <text x="1665" y="1024" class="body-dark">Reports, logs, evidence</text>
+
+  <path class="line" d="M375 1002 L395 1002"/>
+  <path class="line-green" d="M650 1002 L705 1002"/>
+  <path class="line" d="M965 1002 L1020 1002"/>
+  <path class="line" d="M1280 1002 L1335 1002"/>
+  <path class="line" d="M1595 1002 L1635 1002"/>
+
+  <path class="line-dash" d="M525 1072 C525 1135 830 1135 830 1055"/>
+  <text x="580" y="1135" class="note">If invalid or low confidence, send to reviewer, then return to approval path.</text>
+
+  <rect x="80" y="1120" width="1740" height="50" rx="18" fill="rgba(15,23,42,.58)" stroke="rgba(226,232,240,.16)"/>
+  <text x="112" y="1152" class="note">Outcome: clean business record, approved decision trail, ERP delivery status, notifications, reporting dataset and immutable audit log.</text>
+</svg>
