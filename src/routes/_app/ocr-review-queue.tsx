@@ -962,84 +962,11 @@ function OCRReview() {
           collapsedSize="0%"
         >
           <aside className="flex h-full min-h-0 flex-col overflow-hidden bg-background">
-            <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-border px-3 py-2">
-              <div className="flex min-w-0 items-center gap-2">
-                <div className="grid size-7 place-items-center rounded-md bg-success/12 text-success">
-                  <ScanText className="size-3.5" />
-                </div>
-                <div className="min-w-0">
-                  <div className="truncate text-xs font-semibold">Extracted OCR Data</div>
-                  <div className="text-[10px] text-muted-foreground">{extractedFields.length} fields detected</div>
-                </div>
-              </div>
-              <div
-                className="inline-flex flex-wrap rounded border border-border bg-muted/60 p-0.5"
-                role="tablist"
-                aria-label="Extracted OCR data view"
-              >
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={extractedDataView === "information"}
-                  onClick={() => selectExtractedDataView("information")}
-                  className={cn(
-                    "h-6 rounded px-2.5 text-[10px] font-medium transition-colors",
-                    extractedDataView === "information"
-                      ? "tab-selected-glow bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  Information
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={extractedDataView === "table"}
-                  aria-disabled={!lineItemTable}
-                  disabled={!lineItemTable}
-                  onClick={() => selectExtractedDataView("table")}
-                  className={cn(
-                    "h-6 rounded px-2.5 text-[10px] font-medium transition-colors disabled:pointer-events-none disabled:opacity-40",
-                    extractedDataView === "table"
-                      ? "tab-selected-glow bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  Table
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={extractedDataView === "exception"}
-                  onClick={() => selectExtractedDataView("exception")}
-                  className={cn(
-                    "h-6 rounded px-2.5 text-[10px] font-medium transition-colors",
-                    extractedDataView === "exception"
-                      ? "tab-selected-glow bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  Exception
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={extractedDataView === "audit-track"}
-                  onClick={() => selectExtractedDataView("audit-track")}
-                  className={cn(
-                    "h-6 rounded px-2.5 text-[10px] font-medium transition-colors",
-                    extractedDataView === "audit-track"
-                      ? "tab-selected-glow bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  Audit Trail
-                </button>
-              </div>
-              <div className="ml-auto flex shrink-0 flex-col items-end gap-1">
+            <div className="block border-b border-border px-3 py-2 after:clear-both after:table after:content-['']">
+              <div className="float-right mb-1 ml-4">
                 <div
                   className={cn(
-                    "inline-flex h-7 -translate-y-1.5 items-center gap-1.5 rounded-md border px-2 text-[10px] font-semibold shadow-sm",
+                    "inline-flex h-7 items-center gap-1.5 rounded-md border px-2 text-[10px] font-semibold shadow-sm",
                     slaSecondsRemaining < 10 * 60
                       ? "border-destructive/30 bg-destructive/10 text-destructive"
                       : "border-warning/30 bg-warning/10 text-warning",
@@ -1049,6 +976,83 @@ function OCRReview() {
                   <span>SLA</span>
                   <span className="font-mono tabular-nums">{formatSlaTime(slaSecondsRemaining)}</span>
                 </div>
+              </div>
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="flex min-w-0 items-center gap-2">
+                  <div className="grid size-7 place-items-center rounded-md bg-success/12 text-success">
+                    <ScanText className="size-3.5" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="truncate text-xs font-semibold">Extracted OCR Data</div>
+                    <div className="text-[10px] text-muted-foreground">{extractedFields.length} fields detected</div>
+                  </div>
+                </div>
+                <div
+                  className="inline-flex rounded border border-border bg-muted/60 p-0.5"
+                  role="tablist"
+                  aria-label="Extracted OCR data view"
+                >
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={extractedDataView === "information"}
+                    onClick={() => selectExtractedDataView("information")}
+                    className={cn(
+                      "h-6 rounded px-2.5 text-[10px] font-medium transition-colors",
+                      extractedDataView === "information"
+                        ? "tab-selected-glow bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    Information
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={extractedDataView === "table"}
+                    aria-disabled={!lineItemTable}
+                    disabled={!lineItemTable}
+                    onClick={() => selectExtractedDataView("table")}
+                    className={cn(
+                      "h-6 rounded px-2.5 text-[10px] font-medium transition-colors disabled:pointer-events-none disabled:opacity-40",
+                      extractedDataView === "table"
+                        ? "tab-selected-glow bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    Table
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={extractedDataView === "exception"}
+                    onClick={() => selectExtractedDataView("exception")}
+                    className={cn(
+                      "h-6 rounded px-2.5 text-[10px] font-medium transition-colors",
+                      extractedDataView === "exception"
+                        ? "tab-selected-glow bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    Exception
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={extractedDataView === "audit-track"}
+                    onClick={() => selectExtractedDataView("audit-track")}
+                    className={cn(
+                      "h-6 rounded px-2.5 text-[10px] font-medium transition-colors",
+                      extractedDataView === "audit-track"
+                        ? "tab-selected-glow bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    Audit Trail
+                  </button>
+                </div>
+              </div>
+              <div className="mt-1 flex justify-end">
                 <ConfidenceIndicator value={record.confidence} />
               </div>
             </div>

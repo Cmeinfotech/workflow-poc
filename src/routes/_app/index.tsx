@@ -13,16 +13,6 @@ export const Route = createFileRoute("/_app/")({
   }),
 });
 
-const progressByStatus: Record<string, number> = {
-  "Document Received": 67,
-  "OCR Review": 88,
-  Processing: 85,
-  QC: 82,
-  Audit: 79,
-  Exception: 28,
-  Export: 71,
-};
-
 const workflowDistribution = [
   { name: "Received", value: 4820, color: "var(--color-chart-1)" },
   { name: "OCR Review", value: 3840, color: "var(--color-chart-2)" },
@@ -80,13 +70,13 @@ const tooltipStyle = {
 
 function Dashboard() {
   const orderedMetrics = [
-    { label: "Received Files", value: "4,820 / 3,240", status: "Document Received", to: "/inventory", icon: FileInput, tone: "text-info bg-info/12", bar: "bg-info" },
-    { label: "OCR Processing", value: "3,840 / 3,420", status: "OCR Review", to: "/ocr-review-queue", icon: ScanText, tone: "text-primary bg-primary/12", bar: "bg-primary" },
-    { label: "Processing Queue", value: "3,260 / 2,780", status: "Processing", to: "/processing-queue", icon: Settings2, tone: "text-primary bg-primary/12", bar: "bg-primary" },
-    { label: "Processing In Progress", value: "2,710 / 2,230", status: "QC", to: "/qc-review", icon: ClipboardCheck, tone: "text-warning bg-warning/12", bar: "bg-warning" },
-    { label: "Audit Queue", value: "1,680 / 1,320", status: "Audit", to: "/manual-review", icon: UserCheck, tone: "text-warning bg-warning/12", bar: "bg-warning" },
-    { label: "Ready and Completed", value: "3,240 / 2,940", status: "Export", to: "/export", icon: Download, tone: "text-success bg-success/12", bar: "bg-success" },
-    { label: "Exceptions", value: "420 / 310", status: "Exception", to: "/exceptions", icon: AlertTriangle, tone: "text-destructive bg-destructive/12", bar: "bg-destructive" },
+    { label: "Received files", status: "Received", to: "/inventory", icon: FileInput, tone: "text-info bg-info/12", bar: "bg-info", inProgress: "0", inQueue: "0", completedToday: "0", progress: 0, aged: "No aged items", footer: "! updated automatically" },
+    { label: "OCR processing", status: "OCR Queue", to: "/ocr-review-queue", icon: ScanText, tone: "text-success bg-success/12", bar: "bg-success", inProgress: "0", inQueue: "0", completedToday: "1", progress: 100, aged: "No aged items", footer: "Updated automatically" },
+    { label: "Processing Queue", status: "Processing", to: "/processing-queue", icon: Settings2, tone: "text-warning bg-warning/12", bar: "bg-warning", inProgress: "0", inQueue: "5", completedToday: "1", progress: 17, aged: "Oldest: 1d" },
+    { label: "QC Queue", status: "QC", to: "/qc-review", icon: ClipboardCheck, tone: "text-primary bg-primary/12", bar: "bg-primary", inProgress: "0", inQueue: "1", completedToday: "0", progress: 0, aged: "No aged items" },
+    { label: "Audit Queue", status: "Audit", to: "/manual-review", icon: UserCheck, tone: "text-destructive bg-destructive/12", bar: "bg-destructive", inProgress: "0", inQueue: "0", completedToday: "0", progress: 0, aged: "No aged items" },
+    { label: "Exceptions", status: "Exception", to: "/exceptions", icon: AlertTriangle, tone: "text-success bg-success/12", bar: "bg-success", inProgress: "0", inQueue: "0", completedToday: "0", progress: 0, aged: "No aged items" },
+    { label: "Ready and completed", status: "Export", to: "/export", icon: Download, tone: "text-destructive bg-destructive/12", bar: "bg-destructive", inProgress: "0", inQueue: "0", completedToday: "0", progress: 0, aged: "No aged items" },
   ];
 
   return (
@@ -236,21 +226,19 @@ function Dashboard() {
           <h2 className="text-sm font-semibold">Operational Queues</h2>
           <p className="text-xs text-muted-foreground">Open a stage to review and process its current workload.</p>
         </div>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-12">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
           {orderedMetrics.map((metric, index) => {
             if (!metric) return null;
             const Icon = metric.icon;
-            const progress = progressByStatus[metric.status] ?? 50;
-            const [queueValue, completedValue] = metric.value.split(" / ");
             const gridSpan = index < 4
-              ? "xl:col-span-3"
+              ? ""
               : index === 6
-                ? "md:col-span-2 xl:col-span-4"
-                : "xl:col-span-4";
+                ? "xl:col-span-1"
+                : "";
 
             return (
               <Link key={metric.label} to={metric.to} className={`group ${gridSpan}`}>
-                <Card className="h-full p-4 transition group-hover:-translate-y-0.5 group-hover:border-primary/35 group-hover:shadow-sm">
+                <Card className="h-full min-h-36 p-4 transition group-hover:-translate-y-0.5 group-hover:border-primary/35 group-hover:shadow-sm">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-3">
                       <div className={`grid size-9 shrink-0 place-items-center rounded-lg ${metric.tone}`}>
@@ -266,29 +254,35 @@ function Dashboard() {
                     </span>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-2 divide-x divide-border">
+                  <div className="mt-4 grid grid-cols-3 divide-x divide-border">
                     <div className="pr-3">
                       <div className="text-[10px] font-medium uppercase text-muted-foreground">In progress</div>
-                      <div className="mt-1 text-xl font-bold tabular-nums">{queueValue}</div>
+                      <div className="mt-1 text-xl font-bold tabular-nums">{metric.inProgress}</div>
                     </div>
                     <div className="pl-3">
-                      <div className="text-[10px] font-medium uppercase text-muted-foreground">Completed</div>
-                      <div className="mt-1 text-base font-semibold tabular-nums text-muted-foreground">{completedValue}</div>
+                      <div className="text-[10px] font-medium uppercase text-muted-foreground">In queue</div>
+                      <div className="mt-1 text-xl font-bold tabular-nums">{metric.inQueue}</div>
+                    </div>
+                    <div className="pl-3">
+                      <div className="text-[10px] font-medium uppercase text-muted-foreground">Completed today</div>
+                      <div className="mt-1 text-xl font-bold tabular-nums text-muted-foreground">{metric.completedToday}</div>
                     </div>
                   </div>
 
                   <div className="mt-4">
                     <div className="mb-1.5 flex items-center justify-between text-[10px] text-muted-foreground">
                       <span>Stage completion</span>
-                      <span className="font-semibold tabular-nums text-foreground">{progress}%</span>
+                      <span className="font-semibold tabular-nums text-foreground">{metric.progress}%</span>
                     </div>
                     <div className="h-1.5 overflow-hidden rounded-full bg-muted">
-                      <div className={`h-full rounded-full ${metric.bar}`} style={{ width: `${progress}%` }} />
+                      <div className={`h-full rounded-full ${metric.bar}`} style={{ width: `${metric.progress}%` }} />
                     </div>
                   </div>
 
+                  <div className="mt-3 text-[10px] font-medium text-muted-foreground">{metric.aged}</div>
+
                   <div className="mt-3 flex items-center justify-between border-t border-border pt-3 text-[11px] font-medium text-primary">
-                    <span>Open queue</span>
+                    <span>{metric.footer ?? "Open queue"}</span>
                     <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
                   </div>
                 </Card>
